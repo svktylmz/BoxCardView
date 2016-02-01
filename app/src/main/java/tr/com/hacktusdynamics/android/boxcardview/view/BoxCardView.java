@@ -166,4 +166,79 @@ public class BoxCardView extends CardView{
         spacingView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, spacingViewHeightPx));
     }
 
+    //setters getters
+    public Drawable getImage() {
+        return mImage;
+    }
+    public void setImageDrawable(Drawable imageDrawable) {
+        mImage = imageDrawable;
+        refresh();
+    }
+    public void setImageResource(int imageResource) {
+        mImage = getContext().getResources().getDrawable(imageResource);
+        refresh();
+    }
+
+    public String getTitle() {
+        return mTitleText;
+    }
+    public void setTitle(String title) {
+        mTitleText = title;
+        refresh();
+    }
+    public void setTitleResource(int titleResource) {
+        mTitleText = getContext().getString(titleResource);
+        refresh();
+    }
+
+    public String getDescription() {
+        return mDescriptionText;
+    }
+    public void setDescription(String description) {
+        mDescriptionText = description;
+        refresh();
+    }
+    public void setDescriptionResource(int descriptionResource) {
+        mDescriptionText = getContext().getString(descriptionResource);
+        refresh();
+    }
+
+    public Button getNormalButton() {
+        return mNormalButton;
+    }
+    public void setNormalButtonText(String normalButtonText) {
+        mNormalButtonText = normalButtonText;
+        refresh();
+    }
+    public void setNormalButtonTextResource(int normalButtonTextResource) {
+        mNormalButtonText = getContext().getString(normalButtonTextResource);
+        refresh();
+    }
+
+    public Button getHighlightButton() {
+        return mHighlightButton;
+    }
+    public void setHighlightButtonText(String highlightButtonText) {
+        mHighlightButtonText = highlightButtonText;
+        refresh();
+    }
+    public void setHighlightButtonTextResource(int highlightButtonTextResource) {
+        mHighlightButtonText = getContext().getString(highlightButtonTextResource);
+        refresh();
+    }
+
+    public OnClickListener getOnNormalButtonClickListener() {
+        return mOnNormalButtonClickListener;
+    }
+    public void setOnNormalButtonClickListener(OnClickListener onNormalButtonClickListener) {
+        mOnNormalButtonClickListener = onNormalButtonClickListener;
+    }
+
+    public OnClickListener getOnHighlightButtonClickListener() {
+        return mOnHighlightButtonClickListener;
+    }
+    public void setOnHighlightButtonClickListener(OnClickListener onHighlightButtonClickListener) {
+        mOnHighlightButtonClickListener = onHighlightButtonClickListener;
+    }
+
 }
