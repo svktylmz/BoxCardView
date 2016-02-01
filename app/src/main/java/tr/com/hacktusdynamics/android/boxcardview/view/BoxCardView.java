@@ -74,7 +74,96 @@ public class BoxCardView extends CardView{
         handleTitle(layout, 0);
         handleDescription(layout, 1);
         handleSpacing(layout, 2);
-        handleCardViewNormalButtons(layout, 3);
+
+        LinearLayout layoutButtons = (LinearLayout) layout.getChildAt(4);
+        layoutButtons.setVisibility(VISIBLE);
+        handleCardViewNormalButton(layoutButtons, 0);
+        handleCardViewHighlightButton(layoutButtons, 1);
+    }
+
+    private void handleCardViewHighlightButton(ViewGroup layout, int position) {
+        mHighlightButton = (Button) layout.getChildAt(position);
+        if (!TextUtils.isEmpty(mHighlightButtonText)) {
+            mHighlightButton.setText(mHighlightButtonText);
+            mHighlightButton.setVisibility(VISIBLE);
+            mHighlightButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnHighlightButtonClickListener != null) {
+                        mOnHighlightButtonClickListener.onClick(view);
+                    }
+                }
+
+            });
+        } else{
+            mHighlightButton.setVisibility(GONE);
+        }
+    }
+
+    private void handleCardViewNormalButton(ViewGroup layout, int position) {
+        mNormalButton = (Button) layout.getChildAt(position);
+        if (!TextUtils.isEmpty(mNormalButtonText)) {
+            mNormalButton.setText(mNormalButtonText);
+            mNormalButton.setVisibility(VISIBLE);
+            mNormalButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnNormalButtonClickListener != null) {
+                        mOnNormalButtonClickListener.onClick(view);
+                    }
+                }
+            });
+        } else{
+            mNormalButton.setVisibility(GONE);
+        }
+    }
+
+    private void handleDescription(ViewGroup layout, int position) {
+        TextView description = (TextView) layout.getChildAt(position);
+        if (!TextUtils.isEmpty(mDescriptionText)) {
+            description.setText(mDescriptionText);
+            description.setVisibility(VISIBLE);
+        } else description.setVisibility(GONE);
+    }
+
+    private void handleTitle(ViewGroup layout, int position) {
+        TextView title = (TextView) layout.getChildAt(position);
+        if (!TextUtils.isEmpty(mTitleText)) {
+            title.setText(mTitleText);
+            title.setVisibility(VISIBLE);
+        } else title.setVisibility(GONE);
+    }
+
+    private void handleImage(ViewGroup layout, int position) {
+        ImageView imageView = (ImageView) layout.getChildAt(position);
+        if(mImage != null)
+            imageView.setImageDrawable(mImage);
+    }
+
+    private void handleSpacing(ViewGroup layout, int position) {
+        View spacingView = layout.getChildAt(position);
+        int spacingViewHeight = 0;
+        if(!TextUtils.isEmpty(mTitleText)&&
+                TextUtils.isEmpty(mDescriptionText)&&
+                TextUtils.isEmpty(mNormalButtonText)&&
+                TextUtils.isEmpty(mHighlightButtonText)){
+            spacingViewHeight = 6;
+        }else if(!TextUtils.isEmpty(mTitleText) &&
+                TextUtils.isEmpty(mDescriptionText)&&
+                (!TextUtils.isEmpty(mNormalButtonText) || !TextUtils.isEmpty(mHighlightButtonText))){
+            spacingViewHeight = 10;
+        }else if(TextUtils.isEmpty(mTitleText) &&
+                TextUtils.isEmpty(mDescriptionText) &&
+                TextUtils.isEmpty(mNormalButtonText) &&
+                TextUtils.isEmpty(mHighlightButtonText)){
+            spacingViewHeight = 2;
+        }else if(!TextUtils.isEmpty(mDescriptionText) &&
+                (!TextUtils.isEmpty(mNormalButtonText) || !TextUtils.isEmpty(mHighlightButtonText))){
+            spacingViewHeight = 4;
+        }
+
+        int spacingViewHeightPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, spacingViewHeight, getResources().getDisplayMetrics());
+        spacingView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, spacingViewHeightPx));
     }
 
 }
