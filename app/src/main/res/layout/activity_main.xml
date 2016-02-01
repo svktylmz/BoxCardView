@@ -12,29 +12,45 @@
     android:orientation="vertical"
     tools:context="tr.com.hacktusdynamics.android.boxcardview.MainActivity">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
-
-    <tr.com.hacktusdynamics.android.boxcardview.view.BoxCardView
-        android:id="@+id/cardView1"
+    
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:box_title="Card View"
-        app:box_description="Card Description"
-        app:box_image="@mipmap/cardview_image_left"
-        app:box_normalButton_text="Normal btn"
-        app:box_highlightButton_text="Highlight btn" />
+        android:layout_height="match_parent">
 
-    <tr.com.hacktusdynamics.android.boxcardview.view.BoxCardView
-        android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:box_title="Card View"
-        app:box_description="Card Description"
-        app:box_image="@mipmap/cardview_image_left"
-        app:box_normalButton_text="Normal btn"
-        app:box_highlightButton_text="Highlight btn" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <tr.com.hacktusdynamics.android.boxcardview.view.BoxCardView
+                android:id="@+id/cardView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="100dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="8dp"
+                app:box_title="Card View"
+                app:box_description="Card Description"
+                app:box_image="@mipmap/cardview_image_left"
+                app:box_normalButton_text="Normal btn"
+                app:box_highlightButton_text="Highlight btn" />
+
+            <tr.com.hacktusdynamics.android.boxcardview.view.BoxCardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:box_title="Card View"
+                app:box_description="Card Description"
+                app:box_image="@mipmap/cardview_image_left"
+                app:box_normalButton_text="Normal btn"
+                app:box_highlightButton_text="Highlight btn" />
+            </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
