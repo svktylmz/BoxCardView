@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BoxCardViewSTYLEABLE">
+        <attr name="box_title" format="string"/>
+        <attr name="box_description" format="string"/>
+        <attr name="box_image" format="reference"/>
+        <attr name="box_normalButton_text" format="string"/>
+        <attr name="box_highlightButton_text" format="string"/>
+    </declare-styleable>
+</resources>
