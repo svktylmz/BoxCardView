@@ -17,6 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
+
+    <ImageView android:id="@+id/iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     
     <ScrollView
         android:layout_width="match_parent"
@@ -37,7 +41,6 @@
                 app:cardCornerRadius="8dp"
                 app:box_title="Card View"
                 app:box_description="Card Description"
-                app:box_image="@mipmap/cardview_image_left"
                 app:box_normalButton_text="Normal btn"
                 app:box_highlightButton_text="Highlight btn" />
 

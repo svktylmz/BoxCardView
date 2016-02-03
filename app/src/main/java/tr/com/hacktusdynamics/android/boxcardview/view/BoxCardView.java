@@ -3,6 +3,8 @@ package tr.com.hacktusdynamics.android.boxcardview.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -18,6 +20,10 @@ import android.widget.TextView;
 import tr.com.hacktusdynamics.android.boxcardview.R;
 
 public class BoxCardView extends CardView{
+
+    private static final String KEY_SUPER_STATE = "superState";
+    private static final String KEY_TITLE_TEXT = "titleText";
+    private static final String KEY_DESCRIPTION_TEXT = "descriptionText";
 
     // Variables
     private Drawable mImage;
@@ -241,4 +247,26 @@ public class BoxCardView extends CardView{
         mOnHighlightButtonClickListener = onHighlightButtonClickListener;
     }
 
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(KEY_SUPER_STATE, super.onSaveInstanceState());
+        bundle.putString(KEY_TITLE_TEXT, mTitleText);
+        bundle.putString(KEY_DESCRIPTION_TEXT, mDescriptionText);
+        return bundle;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if(state instanceof Bundle){
+            Bundle bundle = (Bundle) state;
+            mTitleText = bundle.getString(KEY_TITLE_TEXT);
+            mDescriptionText = bundle.getString(KEY_DESCRIPTION_TEXT);
+            super.onRestoreInstanceState(bundle.getParcelable(KEY_SUPER_STATE));
+        }else {
+            super.onRestoreInstanceState(state);
+        }
+
+        refresh();
+    }
 }
