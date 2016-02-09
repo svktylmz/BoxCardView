@@ -1,8 +1,8 @@
 package tr.com.hacktusdynamics.android.boxcardview;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BoxCardView cardView1 = (BoxCardView) findViewById(R.id.cardView1);
+
         TextDrawable td = TextDrawable.builder()
                 .beginConfig()
                     .width(60)
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 .endConfig()
                 .buildRound("3", Color.GREEN);
         cardView1.setImageDrawable(td);
-        //cardView1.setImageDrawable(getResources().getDrawable(R.mipmap.cardview_image_left));
         cardView1.setOnNormalButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
